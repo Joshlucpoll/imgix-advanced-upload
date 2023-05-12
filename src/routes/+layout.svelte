@@ -74,6 +74,20 @@
         result="shape"
       />
       <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_1_2" />
+      <feTurbulence
+        result="NOISE"
+        type="fractalNoise"
+        baseFrequency="0.1"
+        numOctaves="6"
+        stitchTiles="stitch"
+      />
+      <feDisplacementMap
+        in="effect1_foregroundBlur_1_2"
+        in2="NOISE"
+        scale="20"
+        xChannelSelector="R"
+        yChannelSelector="R"
+      />
     </filter>
     <clipPath id="clip0_1_2">
       <rect
