@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
   import "../app.css";
+  export const prerender = true;
 </script>
 
 <div class="min-h-screen flex flex-col justify-between">
