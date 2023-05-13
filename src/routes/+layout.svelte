@@ -1,10 +1,23 @@
 <script lang="ts">
   import "../app.css";
-  export const prerender = true;
+  import { apiKey } from "../lib/stores";
+  import { SvelteToast } from "@zerodevx/svelte-toast";
+
+  // prevent reload if API key has been entered
+  function beforeUnload(event) {
+    if ($apiKey) {
+      event.preventDefault();
+      event.returnValue = "";
+      return "";
+    }
+  }
 </script>
 
-<div class="min-h-screen flex flex-col justify-between">
-  <nav class="py-8 flex flex-row justify-end items-center">
+<svelte:window on:beforeunload={beforeUnload} />
+
+<div class="min-h-screen flex flex-col justify-start">
+  <nav class="py-8 flex flex-row justify-between items-center">
+    <a href="/" class="font-bold">imgixAU</a>
     <a href="https://github.com/joshlucpoll/imgix-advanced-upload">
       <svg
         class="opacity-80"
@@ -24,7 +37,7 @@
   </nav>
   <slot />
 
-  <footer class="pb-8 flex flex-row justify-end items-center self-end">
+  <footer class="pb-8 flex flex-row justify-end items-center mt-auto">
     <small class="opacity-60"
       >icons by <a class="underline" href="https://icons8.com">Icons8</a> • made
       by
@@ -34,25 +47,19 @@
 </div>
 
 <svg
-  class="fixed top-0 left-0 w-full -z-10"
-  viewBox="0 0 1442 1442"
+  class="fixed top-0 left-1/2 -translate-x-1/2 h-screen -z-10 mx-auto"
+  viewBox="0 0 1254 1196"
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
 >
   <g clip-path="url(#clip0_1_2)" filter="url(#filter0_f_1_2)">
-    <rect
-      width="1042"
-      height="1042"
-      transform="translate(200 200)"
-      fill="black"
-    />
     <path
-      d="M1139 676.5C1139 756.402 1118.23 834.93 1078.74 904.365C1039.24 973.8 982.381 1031.75 913.741 1072.53C845.1 1113.3 767.042 1135.49 687.239 1136.93C607.436 1138.36 528.635 1118.98 458.579 1080.69L679 676.5H1139Z"
+      d="M1054 535.5C1054 615.402 1033.23 693.93 993.738 763.365C954.243 832.8 897.381 890.752 828.741 931.527C760.1 972.302 682.042 994.495 602.239 995.926C522.436 997.357 443.635 977.977 373.579 939.689L594 535.5H1054Z"
       fill="#E74A4A"
       fill-opacity="0.7"
     />
     <path
-      d="M1103.9 352.64C1006.44 297.747 894.375 274.394 783.105 285.792C671.835 297.189 566.829 342.777 482.525 416.286C398.22 489.796 338.759 587.617 312.317 696.299C285.875 804.981 293.751 919.185 334.862 1023.21L838.26 824.26L1103.9 352.64Z"
+      d="M1007.9 270.64C910.443 215.747 798.375 192.394 687.105 203.792C575.835 215.189 470.829 260.777 386.525 334.286C302.22 407.796 242.759 505.617 216.317 614.299C189.875 722.981 197.751 837.185 238.862 941.208L742.26 742.26L1007.9 270.64Z"
       fill="#3634C5"
       fill-opacity="0.7"
     />
@@ -95,8 +102,10 @@
         width="1042"
         height="1042"
         fill="white"
-        transform="translate(200 200)"
+        transform="translate(115 59)"
       />
     </clipPath>
   </defs>
 </svg>
+
+<SvelteToast />
