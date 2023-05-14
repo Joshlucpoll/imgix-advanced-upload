@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>imgix Advanced Upload</title>
+	<link rel="icon" href="./favicon.png" />
+	<meta name="viewport" content="width=device-width" />
+	<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/0.1ba69656.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.617493c2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.235d2fb2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.9a38be36.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.d0e9cb84.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.93abfc2e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.be350b40.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/stores.dc6bca4b.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.bcdfd625.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/button.08caf4ce.js">
+</head>
+
+<body data-sveltekit-preload-data="hover" class="bg-black text-white px-10">
+	<div style="display: contents">
+
+
+
+
+<div class="min-h-screen flex flex-col justify-start"><nav class="py-8 flex flex-row justify-between items-center"><a href="/" class="font-bold">imgixAU</a>
+    <a href="https://github.com/joshlucpoll/imgix-advanced-upload"><svg class="opacity-80" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 30 30" fill="white"><path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"></path></svg></a></nav>
+  <main class="flex flex-col justify-center items-center mt-auto"><h1 class="text-center font-bold text-4xl pb-2 inline">Welcome to <a class="underline inline" href="https://imgix.com"><svg class="h-9 inline" x="0px" y="0px" viewBox="0 0 306 100"><linearGradient id="ix_gradient" gradientUnits="userSpaceOnUse" x1="252" y1="96" x2="252" y2="4"><stop offset="0" style="stop-color:#D84A2E"></stop><stop offset="1" style="stop-color:#FF6633"></stop></linearGradient><path fill="#FF6633" d="M306,89.5c0,3.6-2.9,6.5-6.4,6.5h-95.2c-3.5,0-6.4-2.9-6.4-6.5l0-79c0-3.6,2.9-6.5,6.4-6.5h95.2
+      c3.5,0,6.4,2.9,6.4,6.5L306,89.5z"></path><path fill="url(#ix_gradient)" d="M306,89.5c0,3.6-2.9,6.5-6.4,6.5h-95.2c-3.5,0-6.4-2.9-6.4-6.5l0-79c0-3.6,2.9-6.5,6.4-6.5h95.2
+      c3.5,0,6.4,2.9,6.4,6.5L306,89.5z"></path><path fill="#F5F5F5" d="M216.8,82.8c-3.6,0-6.4-2.9-6.4-6.5V24.4c0-3.6,2.9-6.5,6.4-6.5s6.4,2.9,6.4,6.5v51.9
+          C223.3,79.9,220.4,82.8,216.8,82.8z"></path><path fill="#F5F5F5" d="M274,49.6L292.8,28c2.3-2.7,2.1-6.8-0.6-9.2c-2.7-2.4-6.7-2.1-9.1,0.6l-17.7,20.4l-17.7-20.4
+          c-2.3-2.7-6.4-3-9.1-0.6c-2.7,2.4-2.9,6.5-0.6,9.2l18.8,21.7L238,71.3c-2.3,2.7-2.1,6.8,0.6,9.2c1.2,1.1,2.7,1.6,4.2,1.6
+          c1.8,0,3.6-0.7,4.9-2.2l17.7-20.4l17.7,20.4c1.3,1.5,3.1,2.2,4.9,2.2c1.5,0,3-0.5,4.2-1.6c2.7-2.4,2.9-6.5,0.6-9.2L274,49.6z"></path><path fill="#ffffff" d="M8,66V34H0V24h18v42h8v10H0V66H8z M18,6c0,3.3-2.7,6-6,6S6,9.3,6,6s2.7-6,6-6S18,2.7,18,6z"></path><path fill="#ffffff" d="M40,66V34h-8V24h18.8v6c6-4.9,12.3-7.1,18.1-7.1c5.8,0,9.8,2.7,12,8.1c6.6-5.4,12.8-8.1,18.5-8.1
+      c3.3,0,6,0.7,8.1,2.2c2.1,1.5,3.6,3.4,4.3,5.6c0.7,2.3,1.1,5.6,1.1,10V66h9v10h-19.1V42.6c0-3-0.1-5.1-0.4-6.3
+      c-0.3-1.2-0.9-2.2-2-3.1c-1.1-0.8-2.4-1.2-3.9-1.2c-4.3,0-9.1,2.2-14.6,6.7V66H90v10H72.1V41.7c0-3.4-0.5-5.8-1.4-7.4
+      c-1-1.5-2.6-2.3-4.9-2.3c-3.8,0-9.8,1.5-15.7,6v28h10.1v10H32V66H40z"></path><path fill="#ffffff" d="M186,24v10h-8.6l-0.1,37.4c0,5.2-0.3,9.1-0.8,11.6c-0.5,2.5-1.8,5.1-3.8,7.7c-2,2.6-5,4.8-9.1,6.6
+      c-4,1.8-8.6,2.7-13.5,2.7c-7.5,0-14.2-2.3-20.1-6.9l6.5-7.4c4.4,3.5,9.2,5.2,14.4,5.2c2.9,0,5.5-0.6,8-1.7c2.5-1.1,4.3-2.5,5.5-4.1
+      c1.2-1.6,2-3.1,2.3-4.6c0.4-1.4,0.5-3.9,0.5-7.3v-4.7c-1.6,2-4.1,4-7.4,5.8c-3.4,1.8-7.1,2.7-11.1,2.7c-7.3,0-13.3-2.6-17.9-7.7
+      c-4.6-5.1-6.9-11.5-6.9-19c0-8.2,2.5-14.8,7.6-19.9c5.1-5.1,10.9-7.6,17.6-7.6c6.7,0,13.5,3.6,18.8,9.1v-8H186z M134.6,50.2
+      c0,5.2,1.5,9.5,4.5,12.9c3,3.3,6.8,5,11.5,5c4.6,0,8.5-1.7,11.8-5c3.3-3.3,5-7.6,5-12.9c0-5.3-1.7-9.6-5-12.8
+      c-3.3-3.2-7.1-4.8-11.5-4.8c-4.4,0-8.2,1.6-11.4,4.8C136.3,40.4,134.6,44.8,134.6,50.2z"></path></svg></a> Advanced Upload
+  </h1>
+  <p class="text-center opacity-60 max-w-xl">This tool allows for more complex image uploads by automatically
+    transferring existing <a class="underline" href="https://en.wikipedia.org/wiki/Exif">Exif</a> image metadata to imgix custom fields
+  </p>
+
+  <div class="mt-24 w-full max-w-xl flex flex-row items-center gap-8"><input id="api-input" class="p-2 px-4 text-center bg-[#1D1A2488] rounded-md w-full outline outline-slate-400" type="password" placeholder="API Key" value="">
+    </div>
+  <button class="opacity-60 underline mt-2" type="button"><small>help</small></button>
+
+  <a href="/images" class="mt-24"><button type="button" class="py-3 px-8 bg-white text-black font-bold rounded-md shadow-[0_0_50px_-7px_rgba(255,255,255,1)] hover:shadow-[0_0_100px_-2px_rgba(255,255,255,1)] hover:scale-105 transition-all">Get Started</button></a></main>
+
+  <footer class="pb-8 flex flex-row justify-end items-center mt-auto"><small class="opacity-60">icons by <a class="underline" href="https://icons8.com">Icons8</a> • made
+      by
+      <a class="underline" href="https://joshlucpoll.dev">Joshlucpoll</a></small></footer></div>
+
+<svg class="fixed top-0 left-1/2 -translate-x-1/2 h-screen -z-10 mx-auto" viewBox="0 0 1254 1196" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1_2)" filter="url(#filter0_f_1_2)"><path d="M1054 535.5C1054 615.402 1033.23 693.93 993.738 763.365C954.243 832.8 897.381 890.752 828.741 931.527C760.1 972.302 682.042 994.495 602.239 995.926C522.436 997.357 443.635 977.977 373.579 939.689L594 535.5H1054Z" fill="#E74A4A" fill-opacity="0.7"></path><path d="M1007.9 270.64C910.443 215.747 798.375 192.394 687.105 203.792C575.835 215.189 470.829 260.777 386.525 334.286C302.22 407.796 242.759 505.617 216.317 614.299C189.875 722.981 197.751 837.185 238.862 941.208L742.26 742.26L1007.9 270.64Z" fill="#3634C5" fill-opacity="0.7"></path></g><defs><filter id="filter0_f_1_2" x="0" y="0" width="1442" height="1442" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_1_2"></feGaussianBlur><feTurbulence result="NOISE" type="fractalNoise" baseFrequency="0.1" numOctaves="6" stitchTiles="stitch"></feTurbulence><feDisplacementMap in="effect1_foregroundBlur_1_2" in2="NOISE" scale="20" xChannelSelector="R" yChannelSelector="R"></feDisplacementMap></filter><clipPath id="clip0_1_2"><rect width="1042" height="1042" fill="white" transform="translate(115 59)"></rect></clipPath></defs></svg>
+
+<ul class="_toastContainer svelte-1u812xz">
+</ul>
+
+
+			
+			<script>
+				{
+					__sveltekit_9zsmnx = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.617493c2.js"),
+						import("./_app/immutable/entry/app.93abfc2e.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+
+</html>
