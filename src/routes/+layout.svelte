@@ -97,14 +97,6 @@
         yChannelSelector="R"
       />
     </filter>
-    <clipPath id="clip0_1_2">
-      <rect
-        width="1042"
-        height="1042"
-        fill="white"
-        transform="translate(115 59)"
-      />
-    </clipPath>
   </defs>
 </svg>
 
