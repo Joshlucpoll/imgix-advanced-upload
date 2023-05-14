@@ -1,68 +1,30 @@
-name: CI
+name: Build and Deploy SvelteKit App to GitHub Pages
+
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-  build:
-    # We're running on ubuntu-latest, nothing special
+  ci:
     runs-on: ubuntu-latest
+
     steps:
-      # As usual, we simply checkout the project
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      # This action is provided by Cypress. It installs node and the NPM
-      # dependencies, and caches them.
-      - name: Cypress install
-        uses: cypress-io/github-action@v2
-        with:
-          # NOTE: we don't actually run tests here!
-          runTests: false
+      - name: Install dependencies
+        run: npm install
 
-      # Now we're building the svelte site.
-      # This step generates a build/ directory.
-      - name: Build site
+      - name: Build
         run: npm run build
 
-      # And lastly, we upload the generated build/ folder as artifact so we can
-      # use it in later steps.
-      - name: Upload build and .svelte-kit folder
-        uses: actions/upload-artifact@v2
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: build
-          if-no-files-found: error
-          path: build
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          publish_branch: gh-pages
+          cname: imgixau.joshlucpoll.photos # Optional custom domain
+          enable_jekyll: false # Disable Jekyll processing
 
-  deploy:
-    # Only run if merged to main.
-    if: github.ref == 'refs/heads/main'
-    # Only deploy if all tests passed.
-    needs: build
-
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      pages: write # to deploy to Pages
-      id-token: write # to verify the deployment originates from an appropriate source
-
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    runs-on: ubuntu-latest
-
-    steps:
-      # No need to checkout the project, since all we need is to download the
-      # build artifact from the build step.
-      - uses: actions/download-artifact@v2
-        with:
-          name: build
-          path: build
-
-      # This seems to be the simplest way to publish to a separate branch.
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2 # or the latest "vX.X.X" version tag for this action

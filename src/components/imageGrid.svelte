@@ -3,10 +3,15 @@
   import { images } from "../lib/stores";
   import Button from "../components/button.svelte";
 
+  export let currentImage: number | null;
+  export let changeCurrentImage: Function;
+
   let fileInput: HTMLInputElement;
   let imageElements: HTMLImageElement[] = [];
+  let loadingImages = false;
 
   async function handleInputChange() {
+    let loadingImages = true;
     let imageFiles = [];
 
     const files = fileInput.files;
@@ -14,13 +19,13 @@
 
     for (let i = 0; i < files.length; i++) {
       // check if existing image already exists
-      if ($images.some((el) => el.name === files[i].name))
+      if (!$images.some((el) => el.name === files[i].name))
         imageFiles.push(files[i]);
     }
     fileInput.value = "";
 
     await loadImages(imageFiles);
-
+    loadingImages = false;
     console.log($images);
   }
 
@@ -59,7 +64,11 @@
 <div class="mb-16">
   <Button>
     <label class="cursor-pointer" for="fileInput">
-      {$images.length == 0 ? "Select images" : "Add more images"}
+      {loadingImages
+        ? "Loading images, this is gonna take a sec"
+        : $images.length == 0
+        ? "Select images"
+        : "Add more images"}
       <input
         class="hidden"
         bind:this={fileInput}
@@ -76,20 +85,26 @@
   class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 cursor-pointer"
 >
   {#each $images as image, i}
-    <div
-      class="relative w-full aspect-square rounded-md overflow-clip hover:scale-105 transition-transform"
+    <button
+      class={`relative w-full aspect-square rounded-md overflow-clip hover:scale-105 transition-transform ${
+        currentImage == i ? "scale-105" : ""
+      }`}
+      type="button"
+      on:click={changeCurrentImage(i)}
     >
       <img
         bind:this={imageElements[i]}
         src={image.src}
         alt="input"
-        class="object-cover w-full h-full opacity-50 hover:opacity-100 transition-opacity"
+        class={`object-cover w-full h-full opacity-50 transition-opacity ${
+          currentImage == i ? "opacity-100" : ""
+        }`}
       />
       <h2
         class="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 font-thin pointer-events-none"
       >
         {image.name}
       </h2>
-    </div>
+    </button>
   {/each}
 </div>
