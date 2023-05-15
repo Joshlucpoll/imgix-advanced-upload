@@ -2,7 +2,8 @@ import type { ExifData } from "./exifData";
 import { writable } from "svelte/store";
 
 interface ImageData {
-  src: string;
+  src: File;
+  thumbnail: string;
   name: string;
   exif: ExifData;
 }

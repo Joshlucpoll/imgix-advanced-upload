@@ -4,7 +4,7 @@
   import { SvelteToast } from "@zerodevx/svelte-toast";
 
   // prevent reload if API key has been entered
-  function beforeUnload(event) {
+  function beforeUnload(event: any) {
     if ($apiKey) {
       event.preventDefault();
       event.returnValue = "";
@@ -37,7 +37,7 @@
   </nav>
   <slot />
 
-  <footer class="pb-8 flex flex-row justify-end items-center mt-auto">
+  <footer class="pb-8 pt-8 flex flex-row justify-end items-center mt-auto">
     <small class="opacity-60"
       >icons by <a class="underline" href="https://icons8.com">Icons8</a> • made
       by

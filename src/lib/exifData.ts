@@ -15,9 +15,6 @@ export interface ExifData {
   MetadataDate: Date;
   ColorMode: number;
   ICCProfile: string;
-  rights: Rights;
-  title: Title;
-  History: History;
   ApplicationRecordVersion: string;
   ObjectName: string;
   CopyrightNotice: string;
@@ -33,15 +30,6 @@ export interface ExifData {
   ProfileCreator: string;
   ProfileDescription: string;
   ProfileCopyright: string;
-  MediaWhitePoint: { [key: string]: number };
-  ChromaticAdaptation: { [key: string]: number };
-  RedMatrixColumn: { [key: string]: number };
-  BlueMatrixColumn: { [key: string]: number };
-  GreenMatrixColumn: { [key: string]: number };
-  RedTRC: { [key: string]: number };
-  GreenTRC: { [key: string]: number };
-  BlueTRC: { [key: string]: number };
-  Chromaticity: { [key: string]: number };
   Make: string;
   Model: string;
   Orientation: string;
@@ -53,7 +41,6 @@ export interface ExifData {
   SensitivityType: number;
   ExifVersion: string;
   DateTimeOriginal: Date;
-  ComponentsConfiguration: { [key: string]: number };
   CompressedBitsPerPixel: number;
   ShutterSpeedValue: number;
   ApertureValue: number;
@@ -81,25 +68,27 @@ export interface ExifData {
   SubjectDistanceRange: string;
 }
 
-export interface History {
-  action: string;
-  softwareAgent: string;
-  when: Date;
+interface Anything {
+  [key: string]: any;
 }
 
-export interface Rights {
-  lang: string;
-}
-
-export interface Title {
-  lang: string;
-  value: string;
-}
+export type RawExifData = ExifData & Anything;
 
 export default async function getExifData(file: File): Promise<ExifData> {
   const promise = new Promise<ExifData>(async (resolve) => {
-    const exif = await exifr.parse(file, true);
-    resolve(exif);
+    const rawExif: RawExifData = await exifr.parse(file, true);
+
+    // const exifDataProperties = <Array<keyof ExifData>>Object.keys(<ExifData>{});
+
+    // const processedExif = <ExifData>{};
+    // console.log(exifDataProperties);
+    // Object.keys(rawExif).forEach((key) => {
+    //   if (exifDataProperties.indexOf(key) >= 0) {
+    //     processedExif[key] = rawExif[key];
+    //   }
+    // });
+
+    resolve(rawExif);
   });
 
   return promise;
